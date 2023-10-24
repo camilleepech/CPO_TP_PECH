@@ -15,7 +15,7 @@ public abstract class Personnage {
     String nom;
     int niveauVie;
     ArrayList<Arme> inventaire  = new ArrayList<Arme>();
-    private Arme Arme_en_Main;
+    Arme Arme_en_Main;
     
      public void Ajouter_Arme (Arme armedonnée){
         int taille3=inventaire.size();
@@ -23,18 +23,18 @@ public abstract class Personnage {
         inventaire.add(armedonnée);
         }
      }    
-    public Personnage(String nom, int niveauVie, Arme Arme_en_Main) {
+    public Personnage(String nom, int niveauVie) {
         this.nom = nom;
         this.niveauVie = niveauVie;
-        this.Arme_en_Main = null;
+     
     }
 
     public Arme getArme_en_Main() {
         return Arme_en_Main;
     }
-    public void équiper_arme (String nv_arme){
+    public void équiper_arme (Arme nv_arme){
         for (int i=0 ; i<inventaire.size() ; i++){
-            if (inventaire.get(1).equals(nv_arme)){
+            if (inventaire.get(i).equals(nv_arme)){
                 Arme_en_Main=inventaire.get(i);
                 System.out.println("L'arme à été trouvé et équipée");
             

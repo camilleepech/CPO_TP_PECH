@@ -21,7 +21,8 @@ public class Guerrier extends Personnage {
 
     @Override
     public String toString() {
-        return "Personnage Guerrier : " +nom +", points de vie :"+niveauVie +", aCheval:" + aCheval;
+        return "Personnage Guerrier : " +nom +", points de vie :"+niveauVie +", aCheval:" + aCheval+
+                ", arme en main : "+ Arme_en_Main;
     }
 
 

@@ -21,7 +21,8 @@ public class Magicien extends Personnage {
 
     @Override
     public String toString() {
-        return "Personnage Magicien : " +nom +", points de vie :"+niveauVie +", confirmé :" + confirme;
+        return "Personnage Magicien : " +nom +", points de vie :"+niveauVie +", confirmé :" + confirme+
+                ", arme en main : "+ Arme_en_Main;
     }
         
 }

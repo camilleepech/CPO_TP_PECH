@@ -11,7 +11,7 @@ import Armes.Epee;
 import Armes.Baton;
 import Armes.Arme;
 import java.util.ArrayList;
-import java.util.ListIterator;
+
 
 /**
  *
@@ -50,6 +50,23 @@ public class TP3_Heroic_Fantasy_PECH {
         for (int i = 0; i < taille; i++) {
             System.out.println(liste2.get(i));
         }
+        Guerrier Raphou = new Guerrier ("Raphou",19,true);
+        Magicien Audric = new Magicien ("Audric",20,true);
+        Baton Bleu = new Baton ("Bleu",15,2);
+        Baton Rouge = new Baton ("Rouge",12,10);
+        Baton Jaune = new Baton ("Jaune",5,20);
+        Epee Rose= new Epee("Rose", 45,3);
+        Epee Violet = new Epee("Violet", 21, 4);
+        Epee Orange = new Epee("Orange", 14, 8);
+        Raphou.Ajouter_Arme(Rose);
+        Raphou.Ajouter_Arme(Violet);
+        Raphou.Ajouter_Arme(Jaune);
+        Audric.Ajouter_Arme(Bleu);
+        Audric.Ajouter_Arme(Rouge);
+        Audric.Ajouter_Arme(Orange);
+        Raphou.équiper_arme(Rose);
+        System.out.println(Audric);
+        System.out.println(Raphou);
     }
 
 }
