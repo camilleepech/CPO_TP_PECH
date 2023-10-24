@@ -13,6 +13,7 @@ public class Magicien extends Personnage {
     public Magicien(String nom, int niveauVie, boolean confirme) {
         super(nom, niveauVie);
         this.confirme = confirme;
+        nombreDeMagiciens++;
     }
 
     public void setConfirme(boolean confirme) {

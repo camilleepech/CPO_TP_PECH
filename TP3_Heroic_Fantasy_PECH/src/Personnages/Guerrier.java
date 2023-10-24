@@ -13,6 +13,7 @@ public class Guerrier extends Personnage {
     public Guerrier(String nom, int niveauVie, boolean aCheval) {
         super(nom, niveauVie);
          this.aCheval = aCheval;
+         nombreDeGuerriers++;
     }
 
     public void setaCheval(boolean aCheval) {

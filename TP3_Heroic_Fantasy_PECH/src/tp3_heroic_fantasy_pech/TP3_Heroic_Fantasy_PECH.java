@@ -67,6 +67,12 @@ public class TP3_Heroic_Fantasy_PECH {
         Raphou.équiper_arme(Rose);
         System.out.println(Audric);
         System.out.println(Raphou);
+
+        System.out.println(Personnage.getNombreDeMagiciens());
+        System.out.println(Personnage.getNombreDePersonnages());
+        System.out.println(Personnage.getNombreDeGuerriers());
+        Conan.detruirePersonnage();
+        System.out.println(Personnage.getNombreDeGuerriers());
     }
 
 }
