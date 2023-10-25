@@ -22,8 +22,15 @@ public class LightOff_PECH_version_console {
         c2.eteindreCellule();
         System.out.println(c2.estEteint());
         c2.getEtat();
+        
         System.out.println(c2);
-                
-    }
+        GrilleDeCellules grille1 = new GrilleDeCellules(7,7);
+        grille1.toString();
+        grille1.activerLigneColonneOuDiagonaleAleatoire();
+        grille1.melangerMatriceAleatoirement(12);
+        grille1.toString();
+        grille1.activerColonneDeCellules(1);
+        grille1.toString();
+       }
     
 }
