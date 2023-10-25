@@ -145,13 +145,17 @@ public class GrilleDeCellules {
      * renvoie true si elles sont eteintes
      * renvoie false si elles ne sont pas toutes eteintes
      */
-    public void cellulesToutesEteintes() {
+    public boolean cellulesToutesEteintes() {
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 matriceCellules[i][j].estEteint();
+                if (matriceCellules[i][j].estEteint()==false){
+                    return false;
+                }
                 
             }
     }
+        return true;
     }
 
     @Override
