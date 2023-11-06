@@ -33,8 +33,9 @@ public class LightOff_PECH_version_console {
         //grille1.toString();
         
         Partie jeu = new Partie();
-        jeu.initialiserPartie();
+        
         jeu.lancerPartie();
+     
         
        }
     
