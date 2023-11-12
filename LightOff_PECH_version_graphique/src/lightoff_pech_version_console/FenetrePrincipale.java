@@ -31,6 +31,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
 
     }
+
+    /**
+     *méthode pour initialiser une nouvelle partie
+     * @param nbLignes les nombres de lignes et colonnes dépendent du niveau du jeu
+     * @param nbColonnes
+     */
     public void initialiserPartie(int nbLignes, int nbColonnes) {
         nbCoups = 0;
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70,
@@ -218,6 +224,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     *Méthode appelée à chaque action (coups)
+     * implémante les coups et vérifie si le jeu est gagné
+     */
     public void Partie(){
         nbCoups ++;
         coups.setText("Nombre de coups : "+ nbCoups );
@@ -244,6 +255,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
        repaint();// TODO add your handling code here:
        Partie();
     }//GEN-LAST:event_diagmontanteActionPerformed
+    
 
     private void nivfacileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nivfacileActionPerformed
         // TODO add your handling code here:
