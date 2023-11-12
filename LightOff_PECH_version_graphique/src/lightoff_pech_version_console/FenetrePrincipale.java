@@ -18,15 +18,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private int nbCoups;
     int i;
     int a;
+    boolean chall;
     /**
      * Creates new form FenetrePrincipale
      */
     public FenetrePrincipale() {
-        
+
         initComponents();
         //initialiserPartie();
-      
-        
+        FenetreDepart dep = new FenetreDepart();
+        dep.setVisible(true);
  
 
 
@@ -38,6 +39,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * @param nbColonnes
      */
     public void initialiserPartie(int nbLignes, int nbColonnes) {
+        chall = false;
         nbCoups = 0;
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70,
         nbColonnes*40, nbLignes*40));
@@ -99,7 +101,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         
         PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
         
-        getContentPane().add(diagmontante, new org.netbeans.lib.awtextra.AbsoluteConstraints(nbColonnes * 40+170, 20, 30, 30));
+        getContentPane().add(diagmontante, new org.netbeans.lib.awtextra.AbsoluteConstraints(nbColonnes * 40+170, 20, 40, 40));
+        getContentPane().add(diagdescendante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 40, 40));
         grille.eteindreToutesLesCellules();
         grille.melangerMatriceAleatoirement(10);
         }}
@@ -126,14 +129,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         diagmontante = new javax.swing.JButton();
         nivfacile = new javax.swing.JButton();
         nivmoyen = new javax.swing.JButton();
-        nivdiff = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         coups = new javax.swing.JTextPane();
+        nivdiff = new javax.swing.JButton();
+        nivchall = new javax.swing.JButton();
+        nivimposs = new javax.swing.JButton();
+        quitter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanneauGrille.setBackground(new java.awt.Color(255, 0, 153));
+        PanneauGrille.setBackground(new java.awt.Color(255, 204, 204));
 
         javax.swing.GroupLayout PanneauGrilleLayout = new javax.swing.GroupLayout(PanneauGrille);
         PanneauGrille.setLayout(PanneauGrilleLayout);
@@ -148,7 +154,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 360, 360));
 
-        PanneauBoutonsVerticaux.setBackground(new java.awt.Color(255, 0, 153));
+        PanneauBoutonsVerticaux.setBackground(new java.awt.Color(255, 204, 204));
 
         javax.swing.GroupLayout PanneauBoutonsVerticauxLayout = new javax.swing.GroupLayout(PanneauBoutonsVerticaux);
         PanneauBoutonsVerticaux.setLayout(PanneauBoutonsVerticauxLayout);
@@ -163,7 +169,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 50, 360));
 
-        PanneauBoutonsHorizontaux.setBackground(new java.awt.Color(255, 0, 153));
+        PanneauBoutonsHorizontaux.setBackground(new java.awt.Color(255, 204, 204));
 
         javax.swing.GroupLayout PanneauBoutonsHorizontauxLayout = new javax.swing.GroupLayout(PanneauBoutonsHorizontaux);
         PanneauBoutonsHorizontaux.setLayout(PanneauBoutonsHorizontauxLayout);
@@ -178,49 +184,103 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 360, 50));
 
+        diagdescendante.setBackground(new java.awt.Color(255, 204, 204));
+        diagdescendante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 204), 2));
         diagdescendante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 diagdescendanteActionPerformed(evt);
             }
         });
-        getContentPane().add(diagdescendante, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 30, 30));
+        getContentPane().add(diagdescendante, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 50, 50));
 
+        diagmontante.setBackground(new java.awt.Color(255, 204, 204));
+        diagmontante.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 204), 2));
         diagmontante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 diagmontanteActionPerformed(evt);
             }
         });
-        getContentPane().add(diagmontante, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 30, 30));
+        getContentPane().add(diagmontante, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 50, 50));
 
+        nivfacile.setBackground(new java.awt.Color(255, 204, 204));
+        nivfacile.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        nivfacile.setForeground(new java.awt.Color(102, 102, 102));
         nivfacile.setText("FACILE");
+        nivfacile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nivfacile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nivfacileActionPerformed(evt);
             }
         });
-        getContentPane().add(nivfacile, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, -1, -1));
+        getContentPane().add(nivfacile, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 80, 30));
 
+        nivmoyen.setBackground(new java.awt.Color(255, 204, 204));
+        nivmoyen.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        nivmoyen.setForeground(new java.awt.Color(102, 102, 102));
         nivmoyen.setText("MOYEN");
+        nivmoyen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nivmoyen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nivmoyenActionPerformed(evt);
             }
         });
-        getContentPane().add(nivmoyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, -1, -1));
+        getContentPane().add(nivmoyen, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 80, 30));
 
+        coups.setEditable(false);
+        coups.setBackground(new java.awt.Color(255, 204, 204));
+        coups.setFont(new java.awt.Font("Segoe UI Black", 0, 10)); // NOI18N
+        coups.setForeground(new java.awt.Color(102, 102, 102));
+        jScrollPane1.setViewportView(coups);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 60));
+
+        nivdiff.setBackground(new java.awt.Color(255, 204, 204));
+        nivdiff.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        nivdiff.setForeground(new java.awt.Color(102, 102, 102));
         nivdiff.setText("DIFFICILE");
+        nivdiff.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         nivdiff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nivdiffActionPerformed(evt);
             }
         });
-        getContentPane().add(nivdiff, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, -1, -1));
+        getContentPane().add(nivdiff, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 80, 30));
 
-        coups.setEditable(false);
-        coups.setBackground(new java.awt.Color(255, 204, 204));
-        jScrollPane1.setViewportView(coups);
+        nivchall.setBackground(new java.awt.Color(255, 204, 204));
+        nivchall.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        nivchall.setForeground(new java.awt.Color(102, 102, 102));
+        nivchall.setText("CHALLENGE");
+        nivchall.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nivchall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nivchallActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nivchall, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, 30));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 60));
+        nivimposs.setBackground(new java.awt.Color(255, 204, 204));
+        nivimposs.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        nivimposs.setForeground(new java.awt.Color(102, 102, 102));
+        nivimposs.setText("IMPOSSIBLE");
+        nivimposs.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        nivimposs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nivimpossActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nivimposs, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 80, 30));
+
+        quitter.setBackground(new java.awt.Color(255, 204, 204));
+        quitter.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        quitter.setForeground(new java.awt.Color(102, 102, 102));
+        quitter.setText("QUITTER");
+        quitter.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        quitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(quitter, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 80, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,13 +290,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      * implémante les coups et vérifie si le jeu est gagné
      */
     public void Partie(){
+        nivchall.setVisible(false);
         nbCoups ++;
         coups.setText("Nombre de coups : "+ nbCoups );
         if (grille.cellulesToutesEteintes()==true){
             FenetreVictoire f = new FenetreVictoire(nbCoups) ;
         
-        f.setVisible(true);
-        setVisible(false);
+            f.setVisible(true);
+            setVisible(false);
+        }
+        if (chall == true && nbCoups==15){
+            FenetreDefaite f2 = new FenetreDefaite ();
+            f2.setVisible(true);
+            setVisible(false);
         }
     }
     private void diagdescendanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagdescendanteActionPerformed
@@ -263,6 +329,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         nivfacile.setVisible(false);
         nivmoyen.setVisible(false);
         nivdiff.setVisible(false);
+        nivimposs.setVisible(false);
         
     }//GEN-LAST:event_nivfacileActionPerformed
 
@@ -270,17 +337,39 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         initialiserPartie(10,10);
         nivfacile.setVisible(false);
         nivmoyen.setVisible(false);
-        nivdiff.setVisible(false);// TODO add your handling code here:
+        nivdiff.setVisible(false);
+        nivimposs.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_nivmoyenActionPerformed
 
-
+   
     
     private void nivdiffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nivdiffActionPerformed
-        initialiserPartie(15,15);
+        // TODO add your handling code here:
+            initialiserPartie(15,15);
         nivfacile.setVisible(false);
         nivmoyen.setVisible(false);
-        nivdiff.setVisible(false);// TODO add your handling code here:// TODO add your handling code here:
+        nivdiff.setVisible(false);
+        nivimposs.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_nivdiffActionPerformed
+
+    private void nivchallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nivchallActionPerformed
+        chall = true;
+        nivchall.setVisible(false); // TODO add your handling code here:
+    }//GEN-LAST:event_nivchallActionPerformed
+
+    private void nivimpossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nivimpossActionPerformed
+        initialiserPartie(15,20);
+        nivfacile.setVisible(false);
+        nivmoyen.setVisible(false);
+        nivdiff.setVisible(false);
+        nivimposs.setVisible(false);
+    diagmontante.setVisible(false);
+    diagdescendante.setVisible(false);// TODO add your handling code here:// TODO add your handling code here:
+    }//GEN-LAST:event_nivimpossActionPerformed
+
+    private void quitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitterActionPerformed
+    System.exit(0);   // TODO add your handling code here:
+    }//GEN-LAST:event_quitterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,8 +414,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton diagdescendante;
     private javax.swing.JButton diagmontante;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton nivchall;
     private javax.swing.JButton nivdiff;
     private javax.swing.JButton nivfacile;
+    private javax.swing.JButton nivimposs;
     private javax.swing.JButton nivmoyen;
+    private javax.swing.JButton quitter;
     // End of variables declaration//GEN-END:variables
 }
